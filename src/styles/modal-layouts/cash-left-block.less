@@ -1,0 +1,26 @@
+// main: ../main.less
+
+.cash-left-block {
+	display: flex;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+
+	height: 80px;
+	padding: 20px;
+
+
+	.static {
+		margin-right: 12px;
+
+		font-family: 'Roboto', Arial, sans-serif;
+		font-size: 26px;
+		font-weight: 400;
+		color: fade(lighten(@main-color, 30%), 50%);
+	}
+}

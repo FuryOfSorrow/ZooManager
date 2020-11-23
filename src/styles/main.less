@@ -1,0 +1,63 @@
+@import './vars.less';
+@import "./fonts.less";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+body {
+	display: block;
+
+	width: 100%;
+	margin: 0;
+
+	//background-color: @main-color;
+	background-color: darken(@main-color, 3%);
+
+
+	.content-layouts {
+		display: block;
+		position: relative;
+		z-index: 1;
+
+		width: 100%;
+	}
+
+	.modal-layouts {
+		display: flex;
+		position: fixed;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		left: 0px;
+		z-index: 2;
+
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: center;
+
+		width: 100%;
+		height: 100%;
+
+		background-color: rgba(0, 0, 0, 0.9);
+	}
+}
+
+@import './content-layouts/info-layout.less';
+@import './content-layouts/market-layout.less';
+@import './content-layouts/modes-layout.less';
+@import './content-layouts/ownership-layout.less';
+
+@import './modal-layouts/close-btn.less';
+@import './modal-layouts/cash-left-block.less';
+@import './modal-layouts/consumable-purchase-layout.less';
+@import './modal-layouts/animal-purchase-layout.less';

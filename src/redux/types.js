@@ -1,0 +1,9 @@
+export const SWITCH_MODE = 'SWITCH_MODE';
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';
+
+export const GAME_INIT = 'GAME_INIT';
+export const NEXT_MONTH = 'NEXT_MONTH';
+export const CONSUMABLE_PURCHASED = 'CONSUMABLE_PURCHASED';
+export const ANIMAL_PURCHASED = 'ANIMAL_PURCHASED';
+export const CONS_RECALC_INCOME = 'CONS_RECALC_INCOME';

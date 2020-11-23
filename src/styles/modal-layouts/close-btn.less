@@ -1,0 +1,22 @@
+// main: ../main.less
+
+.modal-layouts .close-btn {
+	display: block;
+	position: absolute;
+	top: 16px;
+	right: 16px;
+
+	width: 30px;
+	height: 30px;
+
+	fill: fade(lighten(@main-color, 30%), 50%);
+	cursor: pointer;
+
+
+	&:hover {
+		fill: fade(lighten(@main-color, 30%), 80%);
+	}
+	&:active {
+		fill: fade(lighten(@main-color, 30%), 100%);
+	}
+}
