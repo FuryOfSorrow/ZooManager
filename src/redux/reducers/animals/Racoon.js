@@ -1,16 +1,15 @@
-import React from 'react';
-
 import { animal } from './_main';
 
-import { RacoonImgComponent } from './../../../assets/graphics/animals/Racoon';
 
 
-
-export const Racoon = {
-	id: 'racoon-obj', //<=================================should be changed on purchased unit
-	type: 'Racoon',
-	gender: undefined,
-	size: {
+export function Racoon() {
+	this.idTemplate = 'racoon-obj'; //<=================================should be changed on purchased unit
+	this.type = 'Racoon';
+	this.deathChance = {
+		default: undefined,
+		current: undefined
+	};
+	this.size = {
 		current: {
 			num: undefined,
 			str: undefined
@@ -31,20 +30,20 @@ export const Racoon = {
 			num: 4,
 			str: undefined
 		}
-	},
-	price: {
+	};
+	this.price = {
 		default: 120,
 		current: undefined
-	},
-	hp: {
+	};
+	this.hp = {
 		max: 20,
 		current: undefined
-	},
-	mood: {
+	};
+	this.mood = {
 		influence: 35,
 		current: undefined
-	},
-	age: {
+	};
+	this.age = {
 		lifespanExpectancy: {
 			min: undefined,
 			max: undefined
@@ -57,8 +56,8 @@ export const Racoon = {
 		},
 		current: undefined,
 		currentStr: undefined
-	},
-	pregnancy: {
+	};
+	this.pregnancy = {
 		txt: 'High',
 		possible: undefined,
 		timings: {
@@ -75,15 +74,15 @@ export const Racoon = {
 			max: 5,
 			left: undefined
 		}
-	},
-	customers: {
+	};
+	this.customers = {
 		min: 3,
 		max: 6,
 		current: undefined
-	},
-	available: true,
-	img: '/graphics/animals/racoon.png',
-	ration: [
+	};
+	this.available = true;
+	this.img = '/graphics/animals/racoon.png';
+	this.ration = [
 		{
 			id: 'none',
 			active: false,
@@ -144,8 +143,9 @@ export const Racoon = {
 			mood: 3,
 			hp: 1
 		}
-	]
-};
+	];
+}
 
 
-Object.setPrototypeOf(Racoon, animal);
+Racoon.prototype = animal;
+//Object.setPrototypeOf(Racoon, animal);

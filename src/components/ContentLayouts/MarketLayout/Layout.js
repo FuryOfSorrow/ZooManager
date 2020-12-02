@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { animal } from '../../../redux/reducers/animals/_main';
 
 import { ItemToPick } from './../ItemToPick';
 
@@ -26,7 +27,8 @@ export const MarketLayout = () => {
 	domArray = (
 		<>{
 			displayedArray.map((el, i, arr) => {
-				return (<ItemToPick elem={ el } array={ arr } act={ act } key={ (activeMode + i).toString() } />);
+				console.log(el);
+				return (<ItemToPick elem={ el } array={ arr } act={ act } key={ (activeMode + i + el.id).toString() } />);
 			})
 		}</>
 	);

@@ -5,6 +5,8 @@ import { hideModal } from './../../redux/actions/appActions';
 
 import { ConsumablePurchaseLayout } from './ConsumablePurchaseLayout/Layout';
 import { AnimalPurchaseLayout } from './Animal/PurchaseLayout/Layout';
+import { ManageOwnedAnimalLayout } from './Animal/ManageLayout/Layout';
+
 import { CashLeftBlock } from './CashLeftBlock';
 import { CloseBtn } from './../../assets/graphics/ui/CloseBtn';
 
@@ -28,6 +30,8 @@ export const ModalLayouts = () => {
 			content = (<ConsumablePurchaseLayout />);
 		else if (modal.type === 'purchase-animal-category')
 			content = (<AnimalPurchaseLayout />);
+		else if (modal.type === 'manage-owned-animal')
+			content = (<ManageOwnedAnimalLayout />);
 		else
 			content = null;
 

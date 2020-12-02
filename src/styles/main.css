@@ -613,7 +613,7 @@ body .modal-layouts {
   border-radius: 14px;
   list-style-type: none;
   cursor: pointer;
-  background-color: rgba(0, 185, 93, 0.1);
+  background-color: #00150a;
   opacity: 1;
 }
 .consumable-purchase-layout .purchase-list li .img-block {
@@ -849,7 +849,7 @@ body .modal-layouts {
   border: 1px solid rgba(0, 185, 93, 0.5);
   border-radius: 14px;
   overflow: hidden;
-  background-color: rgba(0, 185, 93, 0.1);
+  background-color: #00150a;
 }
 .animal-purchase-layout .card-element .upper-block {
   display: flex;
@@ -1186,5 +1186,696 @@ body .modal-layouts {
 .animal-purchase-layout .card-element .lower-block .purchase-block .buy-btn.disabled svg path,
 .animal-purchase-layout .card-element .lower-block .purchase-block .buy-btn.disabled:hover svg path,
 .animal-purchase-layout .card-element .lower-block .purchase-block .buy-btn.disabled:active svg path {
+  fill: rgba(65, 120, 93, 0.5);
+}
+.manage-owned-animal-layout {
+  width: 420px;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: rgba(0, 185, 93, 0.6);
+}
+.manage-owned-animal-layout .card-element {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10px;
+  border: 1px solid rgba(0, 185, 93, 0.5);
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #00150a;
+  /* .upper-block {
+			display: flex;
+			position: relative;
+
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: flex-start;
+			justify-content: space-between;
+
+			width: 100%;
+			height: 180px;
+
+
+			.img-block {
+				display: flex;
+				position: relative;
+
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: center;
+
+				width: 180px;
+				height: 180px;
+				border: 1px solid fade(lighten(@main-color, 30%), 30%);
+
+				border-radius: 10px;
+				overflow: hidden;
+				background-color: rgba(0, 0, 0, 0.5);
+				background-size: 96% 96%;
+				background-position: 50% 50%;
+				background-repeat: no-repeat;
+
+
+				svg {
+					width: 90%;
+					height: 90%;
+				}
+			}
+
+			.info-block {
+				display: flex;
+				position: relative;
+
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: flex-start;
+
+				width: 290px;
+				height: 180px;
+
+
+				.title,
+				.info-line {
+					display: flex;
+					position: relative;
+
+					flex-direction: row;
+					flex-wrap: nowrap;
+					align-items: baseline;
+				}
+				
+				
+				.title {
+					justify-content: center;
+
+					width: 100%;
+					height: 34px;
+
+					font-size: 22px;
+					line-height: 28px;
+					font-weight: 500;
+					text-align: center;
+				}
+
+				.info-line {
+					justify-content: flex-start;
+
+					width: 100%;
+					margin-top: 5px;
+
+					font-size: 13px;
+					font-weight: 300;
+
+
+					.type {
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+
+		.lower-block {
+			display: flex;
+			position: relative;
+
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			justify-content: space-between;
+
+			width: 100%;
+			height: 112px;
+			margin-top: 10px;
+
+
+			@import (multiple) 'rations-block.less';
+
+			.purchase-block {
+				display: flex;
+				position: relative;
+
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: flex-end;
+
+				width: 156px;
+				height: 100%;
+
+
+				background-color: rgba(0,0,0,0.3);
+				overflow: hidden;
+				border-radius: 10px;
+
+
+				.info-container {
+					display: flex;
+					position: relative;
+
+					flex-direction: column;
+					flex-wrap: nowrap;
+					align-items: center;
+					justify-content: flex-start;
+
+
+					.caption-block {
+						width: 100%;
+						height: 33px;
+
+						font-size: 15px;
+						line-height: 36px;
+						font-weight: 300;
+					}
+
+					.cost-container {
+						display: flex;
+						position: relative;
+
+						flex-direction: row;
+						flex-wrap: nowrap;
+						align-items: flex-start;
+						justify-content: flex-start;
+
+						height: 36px;
+
+
+						.cost {
+							margin-right: 10px;
+
+							font-size: 15px;
+							line-height: 32px;
+							font-weight: 300;
+						}
+					}
+
+					.cash-img {
+						display: flex;
+						position: relative;
+
+						width: 30px;
+						height: 30px;
+
+
+						svg {
+							width: 100%;
+							height: 100%;
+						}
+					}
+				}
+
+				.buy-btn {
+					display: flex;
+					position: relative;
+				
+					flex-direction: row;
+					flex-wrap: nowrap;
+					align-items: center;
+					justify-content: center;
+
+					width: 100px;
+					height: 36px;
+					padding: 3px;
+					margin: 0;
+					margin-bottom: 5px;
+
+					border: none;
+					outline: none;
+
+					border-radius: 10px;
+					background-color: rgba(0, 0, 0, 0.5);
+					cursor: pointer;
+
+
+					svg {
+						width: 100%;
+						height: 100%;
+
+						path {
+							fill: fade(lighten(@main-color, 30%), 50%);
+						}
+					}
+
+					&:hover {
+						background-color: rgba(0, 0, 0, 0.8);
+
+						svg path {
+							fill: fade(lighten(@main-color, 30%), 80%);
+						}
+					}
+					&:active {
+						background-color: rgba(0, 0, 0, 1);
+
+						svg path {
+							fill: fade(lighten(@main-color, 30%), 100%);
+						}
+					}
+
+					&.disabled,
+					&.disabled:hover,
+					&.disabled:active {
+						background-color: rgba(0, 0, 0, 0.25);
+
+						svg path {
+							fill: desaturate(fade(lighten(@main-color, 30%), 50%), 70%);
+						}
+					}
+				}
+			}
+		} */
+}
+.manage-owned-animal-layout .card-element .img-container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.manage-owned-animal-layout .card-element .img-container .img-block {
+  display: block;
+  position: relative;
+  top: -2px;
+  width: 100%;
+  height: 100%;
+  background-size: 500px 500px;
+  background-position: -120px 40%;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+.manage-owned-animal-layout .card-element .img-container .gradient-block {
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(0deg, #00150a 0%, rgba(0, 0, 0, 0) 100%);
+}
+.manage-owned-animal-layout .card-element .name-container {
+  display: block;
+  position: absolute;
+  top: 86px;
+  width: 96%;
+  height: 50px;
+  border-radius: 14px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+.manage-owned-animal-layout .card-element .name-container .txt-container,
+.manage-owned-animal-layout .card-element .name-container .input-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: rgba(200, 0, 0, 0);
+}
+.manage-owned-animal-layout .card-element .name-container .txt-container {
+  display: block;
+  line-height: 51px;
+  color: rgba(0, 185, 93, 0.6);
+}
+.manage-owned-animal-layout .card-element .name-container .input-container {
+  display: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #00b95d;
+  outline: none;
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn {
+  display: flex;
+  position: absolute;
+  z-index: 3;
+  right: 10px;
+  top: 7px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn svg {
+  width: 70%;
+  height: 70%;
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn svg path {
+  fill: rgba(0, 185, 93, 0.5);
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn.hidden {
+  display: none;
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn:hover svg path {
+  fill: rgba(0, 185, 93, 0.8);
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn:active {
+  background-color: #000000;
+}
+.manage-owned-animal-layout .card-element .name-container .edit-btn:active svg path {
+  fill: #00b95d;
+}
+.manage-owned-animal-layout .card-element .name-container.editting .txt-container {
+  display: none;
+}
+.manage-owned-animal-layout .card-element .name-container.editting .input-container {
+  display: block;
+}
+.manage-owned-animal-layout .card-element .name-container.editting .edit-btn {
+  display: none;
+}
+.manage-owned-animal-layout .card-element .data-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 24px;
+}
+.manage-owned-animal-layout .card-element .data-container .info-line {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 24px;
+  padding: 0 20px;
+}
+.manage-owned-animal-layout .card-element .data-container .info-line .val {
+  margin-left: 10px;
+  font-size: 15px;
+  font-weight: 300;
+}
+.manage-owned-animal-layout .card-element .status-block {
+  display: flex;
+  position: relative;
+  width: 96%;
+  height: 60px;
+  margin-top: 6px;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.manage-owned-animal-layout .card-element .status-block .placeholder-block {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.5;
+}
+.manage-owned-animal-layout .card-element .rations-block {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 340px;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 100%;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher svg {
+  width: 24px;
+  height: 24px;
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher svg path {
+  fill: rgba(0, 185, 93, 0.5);
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher:hover {
+  background: rgba(0, 185, 93, 0.02);
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher:hover svg path {
+  fill: rgba(0, 185, 93, 0.8);
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher:active {
+  background: rgba(0, 185, 93, 0.05);
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher:active svg path {
+  fill: #00b95d;
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher.disabled,
+.manage-owned-animal-layout .card-element .rations-block .switcher.disabled:hover,
+.manage-owned-animal-layout .card-element .rations-block .switcher.disabled:active {
+  cursor: default;
+  background: rgba(0, 0, 0, 0);
+}
+.manage-owned-animal-layout .card-element .rations-block .switcher.disabled svg path,
+.manage-owned-animal-layout .card-element .rations-block .switcher.disabled:hover svg path,
+.manage-owned-animal-layout .card-element .rations-block .switcher.disabled:active svg path {
+  fill: rgba(74, 111, 93, 0.7);
+}
+.manage-owned-animal-layout .card-element .rations-block .central {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 272px;
+  height: 100%;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 4px;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .txt {
+  margin-right: 5px;
+  font-size: 15px;
+  line-height: 36px;
+  font-weight: 300;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .txt.txt-stat {
+  margin-right: 3px;
+  font-size: 13px;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .txt.positive {
+  color: #50c850;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .txt.negative {
+  color: #c85050;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .txt.last {
+  margin-right: 0;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img svg {
+  width: 100%;
+  height: 100%;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img .mood-img g {
+  display: none;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img .mood-img.awful g.awful {
+  display: block;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img .mood-img.bad g.bad {
+  display: block;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img .mood-img.neutral g.neutral {
+  display: block;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img .mood-img.good g.good {
+  display: block;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .title-container .img .mood-img.awesome g.awesome {
+  display: block;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .ration-elements {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  padding: 0px 20px 10px;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .ration-elements .elem {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50px;
+  height: 100%;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .ration-elements .elem .img {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+.manage-owned-animal-layout .card-element .rations-block .central .ration-elements .elem .quantity {
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: 300;
+}
+.manage-owned-animal-layout .card-element .rations-block {
+  width: 96%;
+  height: 112px;
+  margin-top: 6px;
+}
+.manage-owned-animal-layout .card-element .actions-block {
+  display: flex;
+  position: relative;
+  width: 96%;
+  margin-top: 6px;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block.sell-block {
+  height: 50px;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .caption-block {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-items: flex-start;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 400;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .caption-block .cost-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 36px;
+  margin-left: 6px;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .caption-block .cost-container .cost {
+  margin-right: 6px;
+  font-size: 18px;
+  line-height: 35px;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .caption-block .cash-img {
+  display: flex;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-top: 3px;
+  margin-left: 3px;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .caption-block .cash-img svg {
+  width: 100%;
+  height: 100%;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 36px;
+  padding: 3px;
+  margin: 0;
+  margin-left: 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn svg {
+  width: 100%;
+  height: 100%;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn svg path {
+  fill: rgba(0, 185, 93, 0.5);
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn:hover svg path {
+  fill: rgba(0, 185, 93, 0.8);
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn:active {
+  background-color: #000000;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn:active svg path {
+  fill: #00b95d;
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn.disabled,
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn.disabled:hover,
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn.disabled:active {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn.disabled svg path,
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn.disabled:hover svg path,
+.manage-owned-animal-layout .card-element .actions-block .act-block .buy-btn.disabled:active svg path {
   fill: rgba(65, 120, 93, 0.5);
 }

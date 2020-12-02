@@ -1,15 +1,17 @@
+import React from 'react';
+
 import { animal } from './_main';
 
+import { RacoonImgComponent } from './../../../assets/graphics/animals/Racoon';
 
 
-export function Rabbit() {
-	this.idTemplate = 'rabbit-obj';
-	this.type = 'Rabbit';
-	this.deathChance = {
-		default: undefined,
-		current: undefined
-	};
-	this.size = {
+
+export const Racoon = {
+	id: 'racoon-obj', //<=================================should be changed on purchased unit
+	type: 'Racoon',
+	name: undefined,
+	gender: undefined,
+	size: {
 		current: {
 			num: undefined,
 			str: undefined
@@ -30,59 +32,59 @@ export function Rabbit() {
 			num: 4,
 			str: undefined
 		}
-	};
-	this.price = {
-		default: 80,
+	},
+	price: {
+		default: 120,
 		current: undefined
-	};
-	this.hp = {
-		max: 10,
+	},
+	hp: {
+		max: 20,
 		current: undefined
-	};
-	this.mood = {
-		influence: 20,
+	},
+	mood: {
+		influence: 35,
 		current: undefined
-	};
-	this.age = {
+	},
+	age: {
 		lifespanExpectancy: {
 			min: undefined,
 			max: undefined
 		},
 		status: {
 			cub: 6,
-			young: 16,
+			young: 12,
 			adult: 60,
-			old: 144
+			old: 204
 		},
 		current: undefined,
 		currentStr: undefined
-	};
-	this.pregnancy = {
-		txt: 'Extreme',
+	},
+	pregnancy: {
+		txt: 'High',
 		possible: undefined,
 		timings: {
 			duration: 2,
-			cooldown: 3,
+			cooldown: 12,
 			left: 2
 		},
 		cubs: {
-			min: 1,
-			max: 9
+			min: 3,
+			max: 6
 		},
 		amount: {
-			min: 3,
-			max: 10,
+			min: 2,
+			max: 5,
 			left: undefined
 		}
-	};
-	this.customers = {
-		min: 1,
-		max: 3,
+	},
+	customers: {
+		min: 3,
+		max: 6,
 		current: undefined
-	};
-	this.available = true;
-	this.img = '/graphics/animals/rabbit.png';
-	this.ration = [
+	},
+	available: true,
+	img: '/graphics/animals/racoon.png',
+	ration: [
 		{
 			id: 'none',
 			active: false,
@@ -92,27 +94,27 @@ export function Rabbit() {
 				exotic: 0,
 				medicine: 0
 			},
-			mood: -5,
-			hp: -5
+			mood: -8,
+			hp: -7
 		},
 		{
 			id: 'poor',
 			active: false,
 			consumes: {
-				meat: 0,
+				meat: 1,
 				plant: 1,
 				exotic: 0,
 				medicine: 0
 			},
-			mood: -2,
+			mood: -5,
 			hp: -4
 		},
 		{
 			id: 'normal',
 			active: false,
 			consumes: {
-				meat: 0,
-				plant: 3,
+				meat: 2,
+				plant: 2,
 				exotic: 0,
 				medicine: 0
 			},
@@ -123,29 +125,28 @@ export function Rabbit() {
 			id: 'fine',
 			active: false,
 			consumes: {
-				meat: 0,
-				plant: 5,
+				meat: 2,
+				plant: 6,
 				exotic: 0,
 				medicine: 0
 			},
-			mood: 1,
+			mood: 2,
 			hp: 0
 		},
 		{
 			id: 'awesome',
 			active: false,
 			consumes: {
-				meat: 0,
-				plant: 8,
+				meat: 3,
+				plant: 5,
 				exotic: 0,
 				medicine: 0
 			},
-			mood: 2,
+			mood: 3,
 			hp: 1
 		}
-	];
-}
+	]
+};
 
 
-Rabbit.prototype = animal;
-//Object.setPrototypeOf(Rabbit, animal);
+Object.setPrototypeOf(Racoon, animal);

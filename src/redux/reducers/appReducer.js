@@ -3,10 +3,10 @@ import { SWITCH_MODE, SHOW_MODAL, HIDE_MODAL } from './../types';
 
 
 const initialState = {
-	mode: 'consumables',
+	mode: 'animals',
 	modal: {
 		show: false,
-		type: 'purchase-consumable-category',
+		type: 'purchase-animal-category',
 		content: {}
 	}
 };

@@ -1,4 +1,6 @@
-import { GAME_INIT, NEXT_MONTH, CONSUMABLE_PURCHASED, ANIMAL_PURCHASED, CONS_RECALC_INCOME } from './../types';
+import { GAME_INIT, NEXT_MONTH, CONSUMABLE_PURCHASED, ANIMAL_PURCHASED, ANIMAL_UPDATED, ANIMAL_SOLD, CONS_RECALC_INCOME } from './../types';
+
+import { goodMath } from './../../serv/globalFuncs';
 
 import { MeatConsumableCategory } from './consumables/main';
 import { PlantsConsumableCategory } from './consumables/main';
@@ -10,17 +12,16 @@ import { Racoon } from './animals/Racoon';
 
 
 const initialState = {
-	activeSellings: {
-		animals: [],
-		staff: [],
-		consumables: [],
-		upgrades: []
-	},
 	month: 0,
 	customers: {
 		count: 0,
-		mood: 0
+		mood: 0,
+		ticketPrice: {
+			default: 5,
+			current: undefined
+		}
 	},
+	manageCost: 5,
 	resources: {
 		cash: {
 			total: 500,
@@ -50,9 +51,10 @@ const initialState = {
 		}
 	},
 	shop: {
+		maxAnimals: 3,
 		animals: [
-			Rabbit.init(),
-			Racoon.init()
+			new Rabbit().init()
+			//new Racoon()
 		],
 		consumables: [
 			MeatConsumableCategory,
@@ -62,14 +64,15 @@ const initialState = {
 		]
 	},
 	ownings: {
-		animals: [
-		]
+		animals: []
 	}
 };
 
 
+
 export const gameReducer = (state = initialState, action) => {
 	let newConsumables;
+	let newAnimalsArr;
 
 
 	switch (action.type) {
@@ -77,14 +80,28 @@ export const gameReducer = (state = initialState, action) => {
 			return state;
 
 		case NEXT_MONTH:
-			return {...state, ...action.payload};
+			console.log(action.payload.ownings.animals);
+			return {
+				...state,
+				month: action.payload.month,
+				customers: action.payload.customers,
+				resources: action.payload.resources,
+				consumables: action.payload.consumables,
+				ownings: {
+					animals: action.payload.ownings.animals
+				},
+				shop: {
+					...state.shop,
+					animals: action.payload.newAnimalsInShop
+				}
+			};
 
 		case CONSUMABLE_PURCHASED:
 			let consType = action.payload.resource;
 			
 			let updatedConsData = {
-				total: state.consumables[`${consType}`].total + action.payload.quantity,
-				income: state.consumables[`${consType}`].income
+				total: Math.round(state.consumables[`${consType}`].total + action.payload.quantity),
+				income: Math.round(state.consumables[`${consType}`].income)
 			};
 
 			newConsumables = {
@@ -100,7 +117,7 @@ export const gameReducer = (state = initialState, action) => {
 				resources: {
 					...state.resources,
 					cash: {
-						total: cashObj.total - action.payload.price,
+						total: goodMath(cashObj.total - action.payload.price, 1),
 						income: cashObj.income
 					}
 				}
@@ -110,13 +127,53 @@ export const gameReducer = (state = initialState, action) => {
 			let newOwnings = {
 				animals: [
 					...state.ownings.animals,
-					action.payload
+					action.payload.newAnimal
 				]
 			};
 
 			return {
 				...state,
-				ownings: newOwnings
+				resources: {
+					...state.resources,
+					cash: {
+						...state.resources.cash,
+						total: goodMath(state.resources.cash.total - action.payload.cost, 0)
+					}
+				},
+				ownings: newOwnings,
+				shop: {
+					...state.shop,
+					animals: action.payload.newAnimalsArrayInShop
+				}
+			};
+
+		case ANIMAL_UPDATED:
+			newAnimalsArr = removeItem(state.ownings.animals, action.payload);
+			newAnimalsArr = insertItem(newAnimalsArr, action.payload);
+
+			return {
+				...state,
+				version: state.version + 1,
+				ownings: {
+					animals: newAnimalsArr
+				}
+			};
+
+		case ANIMAL_SOLD:
+			newAnimalsArr = state.ownings.animals.filter(el => el.id !== action.payload.id);
+
+			return {
+				...state,
+				resources: {
+					...state.resources,
+					cash: {
+						...state.resources.cash,
+						total: goodMath(state.resources.cash.total + action.payload.cost, 0)
+					}
+				},
+				ownings: {
+					animals: newAnimalsArr
+				}
 			};
 
 		case CONS_RECALC_INCOME:
@@ -148,3 +205,16 @@ export const gameReducer = (state = initialState, action) => {
 			return state;
 	}
 };
+
+
+function insertItem(array, action) {
+	return [
+		...array.slice(0, action.index),
+		action.item,
+		...array.slice(action.index)
+	];
+}
+
+function removeItem(array, action) {
+	return [...array.slice(0, action.index), ...array.slice(action.index + 1)];
+}

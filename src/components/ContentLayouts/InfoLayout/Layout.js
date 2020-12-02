@@ -17,6 +17,8 @@ import { MedicineImgComponent } from './../../../assets/graphics/consumables/Med
 
 export const InfoLayout = () => {
 	const currentGameStats = useSelector(state => state.game);
+	const currentUnlockableData = useSelector(state => state.unlockable);
+
 	const currentMonth = useSelector(state => state.game.month);
 
 	const currentCash = useSelector(state => state.game.resources.cash.total);
@@ -132,7 +134,7 @@ export const InfoLayout = () => {
 			<div className="right-part">
 				<div className="month-container">
 					<div className="info">Month: { currentMonth }</div>
-					<button className="btn" onClick={() => {dispatch(goToNextMonth(currentGameStats))}}>Next</button>
+					<button className="btn" onClick={() => {dispatch(goToNextMonth(currentGameStats, currentUnlockableData))}}>Next</button>
 				</div>
 			</div>
 		</div>

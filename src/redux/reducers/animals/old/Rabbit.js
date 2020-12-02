@@ -1,15 +1,17 @@
+import React from 'react';
+
 import { animal } from './_main';
 
+import { RabbitImgComponent } from './../../../assets/graphics/animals/Rabbit';
 
 
-export function Rabbit() {
-	this.idTemplate = 'rabbit-obj';
-	this.type = 'Rabbit';
-	this.deathChance = {
-		default: undefined,
-		current: undefined
-	};
-	this.size = {
+
+export const Rabbit = {
+	id: 'rabbit-obj', //<=================================should be changed on purchased unit
+	type: 'Rabbit',
+	name: undefined,
+	gender: undefined,
+	size: {
 		current: {
 			num: undefined,
 			str: undefined
@@ -30,20 +32,20 @@ export function Rabbit() {
 			num: 4,
 			str: undefined
 		}
-	};
-	this.price = {
+	},
+	price: {
 		default: 80,
 		current: undefined
-	};
-	this.hp = {
+	},
+	hp: {
 		max: 10,
 		current: undefined
-	};
-	this.mood = {
+	},
+	mood: {
 		influence: 20,
 		current: undefined
-	};
-	this.age = {
+	},
+	age: {
 		lifespanExpectancy: {
 			min: undefined,
 			max: undefined
@@ -56,8 +58,8 @@ export function Rabbit() {
 		},
 		current: undefined,
 		currentStr: undefined
-	};
-	this.pregnancy = {
+	},
+	pregnancy: {
 		txt: 'Extreme',
 		possible: undefined,
 		timings: {
@@ -74,15 +76,15 @@ export function Rabbit() {
 			max: 10,
 			left: undefined
 		}
-	};
-	this.customers = {
+	},
+	customers: {
 		min: 1,
 		max: 3,
 		current: undefined
-	};
-	this.available = true;
-	this.img = '/graphics/animals/rabbit.png';
-	this.ration = [
+	},
+	available: true,
+	img: '/graphics/animals/rabbit.png',
+	ration: [
 		{
 			id: 'none',
 			active: false,
@@ -143,9 +145,8 @@ export function Rabbit() {
 			mood: 2,
 			hp: 1
 		}
-	];
-}
+	]
+};
 
 
-Rabbit.prototype = animal;
-//Object.setPrototypeOf(Rabbit, animal);
+Object.setPrototypeOf(Rabbit, animal);

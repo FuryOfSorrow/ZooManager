@@ -24,7 +24,7 @@ export const OwnershipLayout = () => {
 						{
 							ownershipArr.map((el, i, arr) => {
 								return (
-									<ItemToPick elem={ el } array={ arr } act={ act } key={ el.id.toString() } />
+									<ItemToPick key={ el.version.toString() + '-' + el.id.toString() } elem={ el } array={ arr } act={ act } />
 								);
 							})
 						}

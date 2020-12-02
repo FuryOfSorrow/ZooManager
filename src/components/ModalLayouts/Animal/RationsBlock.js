@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { ArrowLeft } from './../../../assets/graphics/ui/ArrowLeft';
 import { ArrowRight } from './../../../assets/graphics/ui/ArrowRight';
@@ -12,19 +13,31 @@ import { HeartImgComponent } from './../../../assets/graphics/animals/traits/Hea
 import { MoodImgComponent } from './../../../assets/graphics/animals/traits/Mood';
 
 
+import { animalsRationChanged } from './../../../redux/actions/gameActions';
+
+
 
 export const RationsBlock = ({ elem }) => {
-	const [selectedRation, setSelectedRation] = useState(2);
+	let activeRation;
+	let dispatch = useDispatch();
 
-	let leftSwitcher;
-	let rightSwitcher;
+	if (!elem.owned)
+		activeRation = 2;
+	else
+		activeRation = elem.ration.findIndex(el => el.active);
+
+	const [selectedRation, setSelectedRation] = useState(activeRation);
+
+
+	let leftSwitcher = useRef(null);
+	let rightSwitcher = useRef(null);
 
 	let bonuses;
 
 
 	useEffect(() => {
-		leftSwitcher = document.querySelector('.switcher.left');
-		rightSwitcher = document.querySelector('.switcher.right');
+		/* leftSwitcher = document.querySelector('.switcher.left');
+		rightSwitcher = document.querySelector('.switcher.right'); */
 	}, [selectedRation]);
 
 	const capitalizeString = (str) => {
@@ -32,23 +45,33 @@ export const RationsBlock = ({ elem }) => {
 	};
 	
 	const leftArrowClick = () => {
-		rightSwitcher.classList.remove('disabled');
+		rightSwitcher.current.classList.remove('disabled');
 
 		if (selectedRation === 1)
-			leftSwitcher.classList.add('disabled');
+			leftSwitcher.current.classList.add('disabled');
 
-		if (selectedRation > 0)
-			setSelectedRation(selectedRation - 1);
+		if (selectedRation > 0) {
+			let x = selectedRation - 1;
+			setSelectedRation(x);
+
+			if (elem.owned)
+				dispatch(animalsRationChanged(elem, x));
+		}
 	};
 
 	const rightArrowClick = () => {
-		leftSwitcher.classList.remove('disabled');
+		leftSwitcher.current.classList.remove('disabled');
 
 		if (selectedRation === elem.ration.length - 2)
-			rightSwitcher.classList.add('disabled');
+			rightSwitcher.current.classList.add('disabled');
 
-		if (selectedRation < elem.ration.length - 1)
-			setSelectedRation(selectedRation + 1);
+		if (selectedRation < elem.ration.length - 1) {
+			let x = selectedRation + 1;
+			setSelectedRation(x);
+
+			if (elem.owned)
+				dispatch(animalsRationChanged(elem, x));
+		}
 	};
 
 	const setBonusesBlock = () => {
@@ -134,7 +157,7 @@ export const RationsBlock = ({ elem }) => {
 
 	return (
 		<div className="rations-block">
-			<div className="switcher left" onClick={ leftArrowClick }>
+			<div ref={ leftSwitcher } className="switcher left" onClick={ leftArrowClick }>
 				<ArrowLeft />
 			</div>
 			<div className="central">
@@ -169,7 +192,7 @@ export const RationsBlock = ({ elem }) => {
 					</div>
 				</div>
 			</div>
-			<div className="switcher right" onClick={ rightArrowClick }>
+			<div ref={ rightSwitcher } className="switcher right" onClick={ rightArrowClick }>
 				<ArrowRight />
 			</div>
 		</div>

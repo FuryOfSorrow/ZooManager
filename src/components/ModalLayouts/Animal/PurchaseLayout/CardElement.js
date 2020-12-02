@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { animalPurchased, recountConsumablesIncome } from './../../../../redux/actions/gameActions';
+import { animalPurchased, recalcConsumablesIncome } from './../../../../redux/actions/gameActions';
+import { hideModal } from './../../../../redux/actions/appActions';
 
 import { RationsBlock } from './../RationsBlock';
 
@@ -12,10 +13,27 @@ import { CashImgComponent } from './../../../../assets/graphics/resources/Cash';
 
 export const CardElement = ({ elem }) => {
 	const dispatch = useDispatch();
+	const currentCash = useSelector(state => state.game.resources.cash.total);
+
+	let buyBtnEl = useRef(null);
+
+	useEffect(() => {
+		console.log(currentCash);
+		console.log(elem.price.current);
+
+		if (currentCash < elem.price.current) {
+			buyBtnEl.current.classList.add('disabled');
+			console.log('тебе не хватает ', elem.price.current - currentCash);
+		}
+	}, []);
 
 	const buyAnimal = (el) => {
+		if (buyBtnEl.current.classList.contains('disabled'))
+			return;
+
 		dispatch(animalPurchased(el));
-		dispatch(recountConsumablesIncome());
+		dispatch(recalcConsumablesIncome());
+		dispatch(hideModal());
 	};
 
 
@@ -67,7 +85,7 @@ export const CardElement = ({ elem }) => {
 							</div>
 						</div>
 					</div>
-					<button className="buy-btn" onClick={ () => { buyAnimal(elem) } }>
+					<button ref={ buyBtnEl } className='buy-btn' onClick={ () => { buyAnimal(elem) } }>
 						<BuyBtn />
 					</button>
 				</div>

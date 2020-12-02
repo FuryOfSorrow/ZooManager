@@ -89,7 +89,7 @@ export const PlantsConsumableCategory = {
 			tooltip: 'You know, if you had your own vegetable garden, you wouldn\'t have to spend so much money.',
 			quantity: 50,
 			price: 128,
-			available: false
+			available: true
 		},
 		{
 			id: 'cons-plant-pack-5',
